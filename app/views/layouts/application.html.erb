@@ -12,11 +12,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= "#{@custom_controller_name || controller_name} #{action_name}" %>">
   <%= render partial: '/layouts/header' %>
+  <% flash.each do |name, value| %>
+  <% if value.is_a?(String) or value.is_a?(Array) %>
+      <div id="layout-message" class="alert alert-layout alert-<%= name == 'notice' ? "success" : "danger" %>">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= content_tag :div, id: "flash_#{name}" do %>
+          <%= [value].flatten.map { |v| strip_tags(v) }.join('<br>').html_safe %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="container-fluid">
     <div class="row">
-      <%= render partial: '/layouts/side_bar' %>
+      <%#= render partial: '/layouts/side_bar' %>
       <%= yield %>
     </div>
   </div>
