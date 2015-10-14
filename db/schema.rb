@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013064235) do
+ActiveRecord::Schema.define(version: 20151014093047) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "score_1",    limit: 4
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20151013064235) do
   add_index "match_games", ["game_id"], name: "index_match_games_on_game_id", using: :btree
   add_index "match_games", ["match_id"], name: "index_match_games_on_match_id", using: :btree
 
+  create_table "match_results", force: :cascade do |t|
+    t.integer  "match_id",   limit: 4
+    t.integer  "winner_id",  limit: 4
+    t.integer  "loser_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "match_results", ["loser_id"], name: "index_match_results_on_loser_id", using: :btree
+  add_index "match_results", ["match_id"], name: "index_match_results_on_match_id", using: :btree
+  add_index "match_results", ["winner_id"], name: "index_match_results_on_winner_id", using: :btree
+
   create_table "matches", force: :cascade do |t|
     t.integer  "team_1_id",  limit: 4
     t.integer  "team_2_id",  limit: 4
@@ -40,13 +52,20 @@ ActiveRecord::Schema.define(version: 20151013064235) do
   add_index "matches", ["team_1_id"], name: "index_matches_on_team_1_id", using: :btree
   add_index "matches", ["team_2_id"], name: "index_matches_on_team_2_id", using: :btree
 
-  create_table "teams", force: :cascade do |t|
+  create_table "team_users", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
+    t.integer  "team_id",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "teams", ["user_id"], name: "index_teams_on_user_id", using: :btree
+  add_index "team_users", ["team_id"], name: "index_team_users_on_team_id", using: :btree
+  add_index "team_users", ["user_id"], name: "index_team_users_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -58,5 +77,5 @@ ActiveRecord::Schema.define(version: 20151013064235) do
 
   add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
 
-  add_foreign_key "teams", "users"
+  add_foreign_key "team_users", "teams"
 end

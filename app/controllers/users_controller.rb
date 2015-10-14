@@ -53,6 +53,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def list_user
+    @list_user = User.where.not(id: params[:user_ids])
+    respond_to do |format|
+      format.json { render json: @list_user }
+    end
+  end
+
   private
 
   def set_user

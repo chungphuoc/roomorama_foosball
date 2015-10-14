@@ -52,3 +52,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-rails'
+gem "select2-rails"
+gem 'rails_script', '~> 0.6.1'
+gem 'bootbox-rails', '~>0.4'
+gem 'handlebars_assets'

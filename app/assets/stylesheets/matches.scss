@@ -1,0 +1,12 @@
+// Place all the styles related to the matches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.matches{
+  .match_frm{
+    padding-left:20%;
+  }
+  .has-error .select2-selection {
+    border: 1px solid red!important;
+    border-radius: 4px;
+  }
+}

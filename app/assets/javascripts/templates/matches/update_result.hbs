@@ -1,0 +1,27 @@
+<div class="bootbox-body">
+  <form method="post" id="post_result" enctype="multipart/form-data" class="post_result" action="{{url}}" accept-charset="UTF-8">
+    <input id="authenticity_token" type="hidden" value="{{authenticity_token}}" name="authenticity_token">
+    <input type="hidden" name="_method" value="{{method}}">
+    <div class="row">
+      <div class="alert alert-danger live-error-message hide"></div>
+      <div class="score-team1-group col-md-6">
+        <legend class="center">Team 1</legend>
+        <label>Game 1 Score: </label>
+        <input class="scores form-control" id="score_1_1" name="match_result[score_1][]" type="number" min="1" max="10">
+        <label>Game 2 Score: </label>
+        <input class="scores form-control" id="score_1_2" name="match_result[score_1][]" type="number" min="1" max="10">
+        <label>Game 3 Score: </label>
+        <input class="scores form-control" id="score_1_3" name="match_result[score_1][]" type="number" min="1" max="10">
+      </div>
+      <div class="score-team2-group col-md-6">
+        <legend class="center">Team 2</legend>
+        <label>Game 1 Score: </label>
+        <input class="scores form-control" id="score_2_1" name="match_result[score_2][]" type="number" min="1" max="10">
+        <label>Game 2 Score: </label>
+        <input class="scores form-control" id="score_2_2" name="match_result[score_2][]" type="number" min="1" max="10">
+        <label>Game 3 Score: </label>
+        <input class="scores form-control" id="score_2_3" name="match_result[score_2][]" type="number" min="1" max="10">
+      </div>
+    </div>
+  </form>
+</div>

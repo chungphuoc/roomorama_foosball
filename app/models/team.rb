@@ -1,4 +1,4 @@
 class Team < ActiveRecord::Base
-  has_one :user
-  belongs_to :match
+  has_many :team_users, dependent: :destroy
+  has_one :match
 end

@@ -1,0 +1,67 @@
+/* override bootbox */
+.modal-content {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+    outline: none;
+}
+.modal-header {
+    border-bottom: 1px solid #dbe1e5;
+    background-color: #ecf2f6;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.modal-content .modal-body {
+    padding: 30px 30px 0;
+}
+.modal-body {
+    position: relative;
+    padding: 20px;
+}
+.modal-content .modal-footer {
+    text-align: right;
+    padding: 20px 30px;
+    position: relative;
+}
+.modal-footer {
+    margin-top: 15px;
+    padding: 19px 20px 20px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+.modal-content .modal-title {
+    font-size: 20px;
+    color: #596679;
+    text-transform: capitalize;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 11px;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}

@@ -43,7 +43,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'DELETE #destroy' do
     it 'redirects to the new user page after success' do
-      post :destroy, id: user.id
+      delete :destroy, id: user.id
       expect(response).to redirect_to users_path
       expect(flash[:notice]).to match(/^User was successfully removed./)
     end

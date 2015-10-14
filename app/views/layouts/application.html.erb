@@ -12,7 +12,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= "#{@custom_controller_name || controller_name} #{action_name}" %>">
+<body class="<%= "#{controller_name} #{action_name}" %>">
   <%= render partial: '/layouts/header' %>
   <% flash.each do |name, value| %>
   <% if value.is_a?(String) or value.is_a?(Array) %>
@@ -32,7 +32,7 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.8.2/holder.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+  <%= include_rails_script %>
 </body>
 </html>
