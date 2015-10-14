@@ -16,6 +16,12 @@ class MatchService
       g = Game.create(score_1: score, score_2: params[:score_2][idx])
       MatchGame.create(match: match, game: g)
     end
+    result = get_result(match)
+    if result[:winner] == 'Team 1'
+      MatchResult.create(match_id: match.id, winner_id: match.team_1_id, loser_id: match.team_2_id)
+    else
+      MatchResult.create(match_id: match.id, winner_id: match.team_2_id, loser_id: match.team_1_id)
+    end
   end
 
   def self.get_result(match)
