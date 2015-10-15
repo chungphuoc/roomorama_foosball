@@ -29,8 +29,10 @@
             <% end %>
           </td>
           <td>
-            <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_match_path(m) %>
-            |
+            <% if m.match_result.nil? %>
+              <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_match_path(m), id: 'edit-match' %>
+              |
+            <% end %>
             <%= link_to '<i class="fa fa-remove red"></i>'.html_safe, match_path(m), method: :delete, data:{confirm: "Are you sure delete this match"} %>
           </td>
         </tr>

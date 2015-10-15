@@ -29,7 +29,7 @@
         <div class="form-group">
           <div class="form-group">
             <%= label_tag :team_2 %>
-            <% value_2 =  @match.team_2.present? ? @match.team_1.team_users.map { |e| e.user_id } : nil %>
+            <% value_2 =  @match.team_2.present? ? @match.team_2.team_users.map { |e| e.user_id } : nil %>
             <%= select_tag "team_member[team_2][]", options_from_collection_for_select(@users, :id, :full_name, value_2), {include_blank: true, multiple: "multiple", class: 'team-select form-control', id: 'team_2'} %>
           </div>
         </div>

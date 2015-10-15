@@ -33,7 +33,7 @@ class MatchesController < ApplicationController
 
   def update
 
-    if @match.update_attributes(match_params)
+    if MatchService.update(params[:team_member], @match)
       respond_to do |format|
         format.html { redirect_to matches_path, notice: 'Match was successfully updated.' }
         format.json { render json: @match, status: :created }

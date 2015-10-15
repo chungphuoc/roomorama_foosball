@@ -11,6 +11,15 @@ class MatchService
     Match.create(team_1_id: @teams[0].id, team_2_id: @teams[1].id)
   end
 
+  def self.update(params, match)
+    @teams = [match.team_1, match.team_2]
+    params.each_with_index do |team, index|
+      team[1].each do |uid|
+        TeamUser.find_or_create_by(team: @teams[index], user_id: uid.to_i)
+      end
+    end
+  end
+
   def self.update_result(params, match)
     params[:score_1].each_with_index do |score, idx|
       g = Game.create(score_1: score, score_2: params[:score_2][idx])
