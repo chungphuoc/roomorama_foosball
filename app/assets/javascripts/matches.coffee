@@ -66,6 +66,22 @@ class App.Matches extends App.Base
           cancel:
             label: 'Cancel'
             className: 'btn-danger'
+    $('.scores-detail').click (e) ->
+      match_id = $(e.target).data('id')
+      $.ajax
+        url: "/matches/#{match_id}/match_game_detail"
+        dataType: 'text'
+        type: 'get'
+        success: (data, textStatus, jQxhr) ->
+          data = JSON.parse(data)
+          values = data
+          bootbox.dialog
+            message: HandlebarsTemplates['matches/detail'](values)
+            title: 'Match Game Detail'
+            buttons:
+              cancel:
+                label: 'Close'
+                className: 'btn-danger'
 
     checkPostResultForm = (e, url) ->
       error_messages = ""
@@ -85,7 +101,7 @@ class App.Matches extends App.Base
             data = JSON.parse(data)
             display_result = $(e.target).parent()
             $(display_result).html('')
-            $(display_result).append("<a class='btn-sm btn-danger' href='#'>#{data.winner}</a> <a class='btn-sm btn-warning' href='#'>#{data.team_1} - #{data.team_2}</a>")
+            $(display_result).append("<a class='btn-sm btn-danger' href='#'>#{data.winner}</a> <a class='btn-sm btn-warning' data-id='#{data.match_id}' href='#'>#{data.team_1} - #{data.team_2}</a>")
           error: (jqXhr, textStatus, errorThrown) ->
             console.log errorThrown
             return

@@ -67,14 +67,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
-          <td>50%</td>
-        </tr>
+        <% @users.each_with_index do |u, index|%>
+        <% medal_class = ['gold', 'silver', 'bronze']%>
+          <tr>
+            <td>
+              <div class="medal">
+                <div class="coin"></div>
+              </div>
+              <div class="outer">
+                <div class="circle-<%= medal_class[index]%>"><%= index + 1 %></div>
+              </div>
+            </td>
+            <td><%= u.full_name %></td>
+            <td><%= u.total_matches %></td>
+            <td><%= u.wins %></td>
+            <td><%= u.loss %></td>
+            <td><%= u.percent_win %>%</td>
+          </tr>
+        <% end %>
 
       </tbody>
     </table>
